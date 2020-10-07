@@ -1,24 +1,58 @@
 import React from 'react';
+import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
+import OrderPane from './components/order-pane';
+import DetailsPane from './components/detail-pane';
+import ConfirmPane from './components/confirm-pane';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const [step, setStep] = React.useState(0);
+
+  const steps = [
+    {
+      label: 'Create your pizza',
+      component: <OrderPane />
+    },
+    {
+      label: 'Enter your details',
+      component: <DetailsPane />
+    },
+    {
+      label: 'Making your pizza',
+      component: <ConfirmPane />
+    }
+  ]
+
+  const goBack = () => {
+    if(step >= 1){
+      setStep(step - 1)
+    }
+  }
+
+  const goNext = () => {
+    if(step < steps.length){
+      setStep(step + 1)
+    }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="order-container">
+        <Paper style={{ display: 'flex', flexDirection: 'column', flex: 1, paddingBottom: 8}}>
+        <div className="order-header">
+          <img src={'/logo.png'} className="App-logo" alt="logo" />
+          <h2>{steps[step].label}</h2>
+        </div>
+          {steps[step].component}
+          <div className="action-pane">
+            <Button color="primary" variant="contained" onClick={goBack}>Back</Button>
+            <Button color="primary" variant="contained" onClick={goNext}>Next</Button>
+          </div>
+        </Paper>
+        </div>
+
     </div>
   );
 }
