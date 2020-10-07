@@ -1,3 +1,5 @@
+![Rainbow Kereru](/public/logo.png)
+
 This project was made by pizza for pizza
 
 ## Rainbow Kereru: Pizza 
