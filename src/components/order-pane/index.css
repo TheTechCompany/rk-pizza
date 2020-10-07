@@ -24,13 +24,23 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
   overflow-y: scroll;
 }
 
-.order-sections{
-  width: 77vw;
+.order-section{
+  flex: 1;
+  padding-left: 33px;
+  padding-right: 33px;
 }
+
+.order-action{
+  display: flex;
+  align-items: flex-end;
+  padding-right: 8px;
+  padding-left: 8px;
+  justify-content: space-between;
+}
+
 
 .order-options{
 

@@ -9,11 +9,16 @@ import './App.css';
 
 function App() {
   const [step, setStep] = React.useState(0);
+  const [ order, setOrder ] = React.useState(null)
+  const [ details, setDetails ] = React.useState(null)
 
   const steps = [
     {
       label: 'Create your pizza',
-      component: <OrderPane />
+      component: <OrderPane onDone={(order) => {
+        setOrder(order)
+        setStep(1)
+      }}/>
     },
     {
       label: 'Enter your details',
@@ -46,10 +51,10 @@ function App() {
           <h2>{steps[step].label}</h2>
         </div>
           {steps[step].component}
-          <div className="action-pane">
+          {step > 0 && (<div className="action-pane">
             <Button color="primary" variant="contained" onClick={goBack}>Back</Button>
             <Button color="primary" variant="contained" onClick={goNext}>Next</Button>
-          </div>
+          </div>)}
         </Paper>
         </div>
 

@@ -1,12 +1,10 @@
 import React from 'react';
+
+import Button from '@material-ui/core/Button';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import Collapse from '@material-ui/core/Collapse';
 import TextField from '@material-ui/core/TextField';
-import Divider from '@material-ui/core/Divider';
-import ExpandMore from '@material-ui/icons/ExpandMore';
-import ExpandLess from '@material-ui/icons/ExpandLess';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
@@ -14,7 +12,7 @@ import StepLabel from '@material-ui/core/StepLabel';
 import './index.css';
 
 export default function OrderPane(props){
-  const [ order, setOrder ] = React.useState({sauce: {}, cheese: {}, toppings: {}})
+  const [ step, setStep ] = React.useState(0)
   const [ selected, setSelected ] = React.useState(null)
   const options = [{
     label: "Sauce",
@@ -48,34 +46,67 @@ export default function OrderPane(props){
       ]
     }
   ]
+
+
+  const getOrderDefaults = () => {
+    let order = {}
+    options.map((x) => {
+      let opts = {}
+      x.items.map((k) => {
+        opts[k] = false;
+      })
+      order[x.key] = opts;
+    })
+    console.log(order)
+    return order;
+  }
+  const [ order, setOrder ] = React.useState(getOrderDefaults())
+
   return (
     <div className="order-pane">
-      <div className="order-sections">
-        {options.map((x, ix) => (
-          <div className="order-options">
-            <div className="order-option__label" onClick={() => {
-              setSelected(ix !== selected ? ix : null)
-            }}>
-              <h5>{x.label}</h5>{ix == selected ? <ExpandLess /> : <ExpandMore />}
-            </div>
-                <Divider />
-            <Collapse in={ix == selected}>
-              <div className="order-option__options">
-              {x.items.map((y) => (
-                <FormGroup row>
-                  <FormControlLabel
-                    control={<Checkbox onChange={(e) => {
+      <Stepper activeStep={step}>
+        {options.map((x, ix) => {
+          
+          return (
+            <Step key={ix}>
+              <StepLabel>{x.label}</StepLabel>
+            </Step>
+          )
+        })}
+      </Stepper>
+      <div className="order-section">
+          {options[step].items.map((x) => (
+            <FormGroup row>
+              <FormControlLabel
+                control={
+                  <Checkbox 
+                    checked={order[options[step].key][x]}
+                    onChange={(e) => {
                       let o = Object.assign({}, order)
-                      o[x.key][y] = e.target.checked;
+                      o[options[step].key][x] = e.target.checked;
                       setOrder(o)
-                    }} checked={order[x.key][y]} />}
-                      label={y} />
-                </FormGroup>
-              ))}
-              </div>
-            </Collapse>
-          </div>
-        ))}
+                    }}
+                    />}
+                label={x}/>
+            </FormGroup>
+          ))} 
+      </div>
+      <div className="order-action">
+        <Button
+          disabled={!(step > 0)}
+          color="primary"
+          onClick={() => setStep(step -1)}
+          variant="contained">Back</Button>
+        <Button 
+          color="primary" 
+          onClick={() => {
+            if(step >= options.length -1){
+              props.onDone(order)
+            }else{
+              setStep(step + 1)
+            }
+          }}
+          variant="contained">Next</Button>
       </div>
     </div>
   );
