@@ -5,7 +5,6 @@ import Button from '@material-ui/core/Button';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import TextField from '@material-ui/core/TextField';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
@@ -15,7 +14,7 @@ import './index.css';
 
 function OrderPane(props){
   const [ step, setStep ] = React.useState(0)
-  const [ selected, setSelected ] = React.useState(null)
+
   const options = [{
     label: "Sauce",
     key: "sauce",
@@ -59,6 +58,8 @@ function OrderPane(props){
         return false;
       case 2:
         return !(props.order.toppings.length > 0)
+      default:
+        return false;
     }
   }
 

@@ -7,6 +7,7 @@ import { placeOrder } from '../../actions/orderActions';
 import './index.css';
 
 function ConfirmPane(props){
+  
   React.useEffect(() => {
     props.placeOrder();
   }, [])

@@ -1,5 +1,4 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import WaitingRoom from '../../components/waiting-room';
 import './index.css';
@@ -11,7 +10,7 @@ export default function LandingView(props){
           <div className="landing-actions">
             <div className="landing-actions__container">
             <div className="landing-header">
-              <img src="/logo.png" className="rk" />
+              <img alt="Rainbow Kereru" src="/logo.png" className="rk" />
               <h2>Rainbow Kereru Pizza</h2>
             </div>
             <div 

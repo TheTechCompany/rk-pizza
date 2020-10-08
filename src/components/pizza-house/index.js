@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {  Model, Engine, Scene } from 'react-babylonjs';
-import { Vector3, Axis } from '@babylonjs/core';
+import { Vector3 } from '@babylonjs/core';
 let lastTime = Date.now();
 export default function PizzaHouse(props){
 
@@ -11,7 +11,6 @@ export default function PizzaHouse(props){
 
   const animate = _ => {
 
-    const velocity = 0.005;
     const rpm = 3.33;
     const now = Date.now()
     const deltaTimeInMillis = now - lastTime;
