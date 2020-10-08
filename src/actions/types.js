@@ -1,2 +1,3 @@
+export const PIZZA_ORDERED = 'PIZZA_ORDERED';
 export const UPDATE_DETAILS = 'UPDATE_DETAILS';
 export const UPDATE_ORDER = 'UPDATE_ORDER';

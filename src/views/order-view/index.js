@@ -5,22 +5,23 @@ import Button from '@material-ui/core/Button';
 import OrderPane from '../../components/order-pane';
 import DetailsPane from '../../components/detail-pane';
 import ConfirmPane from '../../components/confirm-pane';
+import './index.css';
 
 export default function OrderView(props){
   const [step, setStep] = React.useState(0);
   const steps = [
     {
-      label: 'Create your pizza',
+      label: 'Choose your pizza',
       component: <OrderPane onDone={() => {
         setStep(1)
       }}/>
     },
     {
-      label: 'Enter your details',
+      label: 'Identify your pizza',
       component: <DetailsPane />
     },
     {
-      label: 'Making your pizza',
+      label: 'Love your pizza',
       component: <ConfirmPane />
     }
   ]
@@ -43,7 +44,7 @@ export default function OrderView(props){
         <Paper style={{ display: 'flex', flexDirection: 'column', flex: 1, paddingBottom: 8}}>
         <div className="order-header">
           <img src={'/logo.png'} className="App-logo" alt="logo" />
-          <h2>{steps[step].label}</h2>
+          <h2 >{steps[step].label}</h2>
         </div>
           {steps[step].component}
           {(step > 0  && step < (steps.length -1) )&& (<div className="action-pane">

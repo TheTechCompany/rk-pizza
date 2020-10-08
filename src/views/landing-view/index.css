@@ -1,3 +1,21 @@
+.landing-actions__container{
+  background: rgba(255, 255, 255, 0.6);
+  padding: 8px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.phwoop-link{
+ 
+  font-family: "Herkules";
+}
+
+.phwoop-link a {
+  text-decoration: none; 
+}
+
 @media only screen and (max-width: 600px){
   .landing-view .MuiPaper-root{
     width: 90vw !important;
@@ -21,6 +39,7 @@
 
 .landing-header h2{
   margin: 0;
+  font-family: "Herkules";
   margin-bottom: 8px;
 }
 

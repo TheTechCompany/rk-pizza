@@ -1,3 +1,13 @@
+@font-face{
+  font-family: "Herkules";
+  src: url('/Herkules.ttf') format('truetype');
+}
+
+@font-face{
+  font-family: "HerkulesShadow";
+  src: url('/HerkulesShadow.ttf') format('truetype');
+}
+
 .order-header{
   display: flex;
   padding-left: 8px;
@@ -59,8 +69,8 @@ html, body, .App, #root{
 }
 
 .App-logo {
-  height: 77px;
-  width: 77px;
+  height: 60px;
+  width: 60px;
   pointer-events: none;
 }
 

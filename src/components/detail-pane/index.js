@@ -35,6 +35,10 @@ function DetailPane(props){
           props.updateDetails('address', e.target.value)
         }}
         fullWidth />
+      <div>OR</div>
+      <div className="social-details">
+
+      </div>
     </div>
   );
 }

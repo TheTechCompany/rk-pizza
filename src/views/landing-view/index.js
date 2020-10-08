@@ -9,17 +9,19 @@ export default function LandingView(props){
       <Paper >
         <WaitingRoom>
           <div className="landing-actions">
+            <div className="landing-actions__container">
             <div className="landing-header">
               <img src="/logo.png" className="rk" />
               <h2>Rainbow Kereru Pizza</h2>
             </div>
             <div 
               onClick={() => props.history.push('/pizza')}
-              className="phwoop-action">Create your base</div>
-            <div>
-              <img src="/phwoop-text.png" className="phwoop-logo"/>
+              className="phwoop-action">Get a feed</div>
+            <div className="phwoop-link">
+              <h4>Powered by <a href="https://www.phwoop.com">Phwoop</a></h4>
             </div>
           </div>
+        </div>
         </WaitingRoom>
       </Paper>
     </div>

@@ -12,6 +12,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "aws-sdk": "^2.769.0",
     "react": "^16.13.1",
     "react-babylonjs": "^2.2.9",
     "react-dom": "^16.13.1",
@@ -25,6 +26,7 @@
   "scripts": {
     "start": "react-scripts start",
     "bake": "react-scripts build",
+    "deploy-aws": "node aws-deploy.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

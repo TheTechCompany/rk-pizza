@@ -19,7 +19,7 @@ export default function orderReducer(state = INITIAL, action = {}){
 
       let _state = Object.assign({}, state)
       _state[action.key] = key; 
-        
+      console.log(_state)        
       return _state;
     default:
       return state;

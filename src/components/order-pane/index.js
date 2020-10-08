@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -27,6 +28,7 @@ function OrderPane(props){
     {
       label: "Cheese",
       key: "cheese",
+      optional: true,
       items: [
         "Mozzarella",
         "Dairy Free Mozarella",
@@ -49,28 +51,31 @@ function OrderPane(props){
   ]
 
 
-  const getOrderDefaults = () => {
-    let order = {}
-    options.map((x) => {
-      let opts = {}
-      x.items.map((k) => {
-        opts[k] = false;
-      })
-      order[x.key] = opts;
-    })
-    console.log(order)
-    return order;
+  const canNext = () => {
+    switch(step){
+      case 0:
+        return !(props.order.sauce.length > 0)
+      case 1:
+        return false;
+      case 2:
+        return !(props.order.toppings.length > 0)
+    }
   }
-  const [ order, setOrder ] = React.useState(getOrderDefaults())
 
   return (
     <div className="order-pane">
       <Stepper activeStep={step}>
         {options.map((x, ix) => {
-          
+          let stepProps = {
+
+          }
+
+          if(x.optional){
+            stepProps.optional = <Typography variant="caption">Optional</Typography>;
+          }
           return (
             <Step key={ix}>
-              <StepLabel>{x.label}</StepLabel>
+              <StepLabel {...stepProps}>{x.label}</StepLabel>
             </Step>
           )
         })}
@@ -96,11 +101,12 @@ function OrderPane(props){
           color="primary"
           onClick={() => setStep(step -1)}
           variant="contained">Back</Button>
-        <Button 
+        <Button
+          disabled={canNext()}
           color="primary" 
           onClick={() => {
             if(step >= options.length -1){
-              props.onDone(order)
+              props.onDone()
             }else{
               setStep(step + 1)
             }
