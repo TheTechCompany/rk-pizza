@@ -8,10 +8,11 @@ import TextField from '@material-ui/core/TextField';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
-
+import { connect } from 'react-redux';
+import { updateOrder } from '../../actions/orderActions';
 import './index.css';
 
-export default function OrderPane(props){
+function OrderPane(props){
   const [ step, setStep ] = React.useState(0)
   const [ selected, setSelected ] = React.useState(null)
   const options = [{
@@ -80,11 +81,9 @@ export default function OrderPane(props){
               <FormControlLabel
                 control={
                   <Checkbox 
-                    checked={order[options[step].key][x]}
+                    checked={props.order[options[step].key].indexOf(x) > -1}
                     onChange={(e) => {
-                      let o = Object.assign({}, order)
-                      o[options[step].key][x] = e.target.checked;
-                      setOrder(o)
+                      props.updateOrder(options[step].key, x)
                     }}
                     />}
                 label={x}/>
@@ -111,3 +110,13 @@ export default function OrderPane(props){
     </div>
   );
 }
+
+export default connect((state) => ({
+  order: {
+    sauce: state.order.sauce,
+    cheese: state.order.cheese,
+    toppings: state.order.toppings
+  }
+}), (dispatch) => ({
+  updateOrder: (key, value) => dispatch(updateOrder(key, value))
+}))(OrderPane)

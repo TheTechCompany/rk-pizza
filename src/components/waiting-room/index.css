@@ -1,0 +1,30 @@
+.waiting-room{
+  position: relative;
+  flex: 1;
+  display: flex;
+}
+
+.waiting-room .info{
+  flex: 1;
+  display: flex;
+  z-index: 3;
+  border-radius: 3px;
+  background-color: rgba(255, 0, 255, 0.2);
+}
+
+.waiting-room .container{
+  border-radius: 3px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  z-index: 1;
+}
+
+.container canvas{
+  flex: 1;
+  z-index: 1;
+}

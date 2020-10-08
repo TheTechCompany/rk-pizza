@@ -1,0 +1,50 @@
+@media only screen and (max-width: 600px){
+  .landing-view .MuiPaper-root{
+    width: 90vw !important;
+    height: 90vh !important;
+  }
+
+}
+.landing-view .MuiPaper-root{
+  display: flex;
+  width: 66vw;
+  height: 77vh;  
+}
+
+.landing-header{
+  display: flex;
+  color: black;
+  flex-direction: column;
+  font-weight: bold;
+  align-items: center;
+}
+
+.landing-header h2{
+  margin: 0;
+  margin-bottom: 8px;
+}
+
+.phwoop-logo{
+  height: 60px;
+}
+
+.landing-actions{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.landing-header img{
+  height: 50px;
+  width: 50px;
+  margin-right: 8px;
+}
+
+.landing-view{
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
